@@ -15,4 +15,4 @@ for i,tweet in enumerate(sntwitter.TwitterSearchScraper('우울증 진단 since:
 # Creating a dataframe from the tweets list above
 tweets_df2 = pd.DataFrame(tweets_list2, columns=['Datetime', 'Text'])
 
-tweets_df2.to_csv('/.dataset/save.csv', encoding='utf-8')
+tweets_df2.to_csv('./dataset/save.csv', encoding='utf-8')
