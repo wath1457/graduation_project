@@ -6,7 +6,7 @@ import re
 tweets_list2 = []
 
 # Using TwitterSearchScraper to scrape data and append tweets to list
-for i,tweet in enumerate(sntwitter.TwitterSearchScraper('우울증 진단 since:2021-01-01 until:2022-09-01').get_items()):
+for i,tweet in enumerate(sntwitter.TwitterSearchScraper('우울증 진단 since:2021-01-01 until:2022-09-18').get_items()):
     if i>100:
         break
     tweets_list2.append([tweet.date, tweet.content])

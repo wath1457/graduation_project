@@ -46,7 +46,9 @@ f = open("./dataset/save.csv", encoding = 'utf-8')
 data = csv.reader(f)
 tweets_list = []
 row_list = []
+tmp = [] # 중복 check
 count = 1
+reduplication = 0
 for row in data:
     for val in row:
          # 데이터 구조가 index, Datetime, text 이므로 text일때만 cleaning 진행
@@ -55,9 +57,18 @@ for row in data:
         else:
             row_list.append(val)
         count += 1
-    tweets_list.append(row_list)
+
+    # 중복 제거
+    if row_list[2] in tmp: # 트윗 내용이 이미 한번 저장된 내용이면 넘김
+        reduplication += 1
+        continue
+    else:
+        tweets_list.append(row_list)
+        tmp.append(row_list[2])
     row_list = []
 f.close()
+
+print("중복트윗 개수 : {0}".format(reduplication))
 
 f = open("./clean_dataset/clean.csv", 'w', encoding = 'utf-8', newline='')
 wr = csv.writer(f)
