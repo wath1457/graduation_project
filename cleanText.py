@@ -27,6 +27,9 @@ def cleanText(readData, Num=True, Eng=True):
     
     # Remove newline
     text = text.replace('\n',' ')
+
+    # 한글 자,모음 제거
+    text = re.sub('([ㄱ-ㅎㅏ-ㅣ]+)', '', text)
     
     if Num is True:
         # Remove Numbers

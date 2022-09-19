@@ -18,8 +18,8 @@ for row in data:
             row_list.append(val)
         count += 1
 
-    # 중복 제거
-    if row_list[2] in tmp: # 트윗 내용이 이미 한번 저장된 내용이면 넘김
+    # 중복, 공백 제거
+    if row_list[2] in tmp or row_list[2] == '': # 트윗 내용이 이미 한번 저장된 내용이면 넘김
         minus_index += 1
         reduplication += 1
     else:
@@ -37,4 +37,4 @@ wr = csv.writer(f)
 for row in tweets_list:
     wr.writerow(row)
 f.close()
-print("중복 개수 : " + str(reduplication))
+print("제거 개수 : " + str(reduplication))
