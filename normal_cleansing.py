@@ -1,4 +1,5 @@
 import csv
+import pandas as pd
 from cleanText import cleanText
 
 f = open("./dataset/normal.csv", encoding = 'utf-8')
@@ -7,7 +8,7 @@ tweets_list = []
 row_list = []
 tmp = [] # 중복 check
 count = 1
-minus_index = 0 # 중복 데이터때문에 꼬인 index 맞추기
+
 reduplication = 0
 for row in data:
     for val in row:
@@ -19,22 +20,16 @@ for row in data:
         count += 1
 
     # 중복, 공백 제거
-    if row_list[2] in tmp or row_list[2] == '': # 트윗 내용이 이미 한번 저장된 내용이면 넘김
-        minus_index += 1
+    if row_list[2] in tmp or row_list[2] == '': # 트윗 내용이 이미 한번 저장된 내용이면 넘김 
         reduplication += 1
     else:
-        if row_list[0] == '':
-            tweets_list.append(row_list)
-        else:
-            row_list[0] = int(row_list[0]) - minus_index
-            tweets_list.append(row_list)
-            tmp.append(row_list[2])
+        tweets_list.append([row_list[1],row_list[2]])
+        tmp.append(row_list[2])
     row_list = []
 f.close()
 
-f = open("./clean_dataset/clean_normal.csv", 'w', encoding = 'cp949', newline='')
-wr = csv.writer(f)
-for row in tweets_list:
-    wr.writerow(row)
-f.close()
+tweets_df = pd.DataFrame(tweets_list, columns=['Datetime', 'Text'])
+tweets_df.drop_duplicates(['Text'], ignore_index = True)
+tweets_df.to_csv('./clean_dataset/clean_normal.csv', encoding='cp949')
+
 print("제거 개수 : " + str(reduplication))

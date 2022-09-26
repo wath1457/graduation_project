@@ -1,8 +1,8 @@
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 
-keyword_MAX = 250
-total_MAX = 1000
+keyword_MAX = 3800
+total_MAX = 15000
 plus = 0
 
 tweets_list = []
@@ -10,7 +10,7 @@ search_list = ['은', '는', '이', '가']
 total = 0
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for idx, keyword in enumerate(search_list):
-    for i,tweet in enumerate(sntwitter.TwitterSearchScraper(search_list[idx] + 'since:2020-01-01 until:2022-09-18').get_items()):
+    for i,tweet in enumerate(sntwitter.TwitterSearchScraper(search_list[idx] + 'since:2018-01-01 until:2022-09-26').get_items()):
         if i >= keyword_MAX + plus or total >= total_MAX: # i는 keyword 별 검색 제한
             break
         if '우울' in tweet.content:
