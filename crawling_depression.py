@@ -2,13 +2,13 @@ import snscrape.modules.twitter as sntwitter
 import pandas as pd
 
 keyword_MAX = 10000
-total_MAX = 20000
+total_MAX = 50000
 plus = 0
 num = []
 # Creating list to append tweet data to
 tweets_list = []
-except_list = ['혐의', '기사', '배우', '뉴스']
-search_list = ['우울증 진단', '우울증 처방', '우울증 악화', '나 우울증이래']
+except_list = ['혐의', '기사', '배우', '뉴스', '출처']
+search_list = ['우울', '슬픔', '침울', '눈물', '속상']
 total = 0
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for idx, keyword in enumerate(search_list):
