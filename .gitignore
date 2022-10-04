@@ -1,4 +1,5 @@
 grad_proj_venv
 dataset
 clean_dataset
+back_up
 *.pyc
