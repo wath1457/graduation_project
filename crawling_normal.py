@@ -1,14 +1,14 @@
 import snscrape.modules.twitter as sntwitter
 import pandas as pd
 
-keyword_MAX = 10000
-total_MAX = 200000
+keyword_MAX = 5000
+total_MAX = 100000
 plus = 0
 num = []
 # Creating list to append tweet data to
 tweets_list = []
-except_list = ['혐의', '기사', '배우', '뉴스', '출처']
-search_list = ['기쁨', '좋음', '행복', '흐뭇', '사랑', '기쁘', '기뻐', '일상', '뿌듯', '소망', '희망']
+except_list = ['혐의', '기사', '배우', '뉴스', '출처', '우울', '슬픔', '침울', '눈물', '속상', '자살', '무기력', '슬프', '슬퍼', '죽고', '불안', '자해']
+search_list = ['기쁨', '좋음', '행복', '사랑', '기쁘', '기뻐', '희망', '뿌듯', '흐뭇', '편안', '감사', '소망']
 total = 0
 # Using TwitterSearchScraper to scrape data and append tweets to list
 for idx, keyword in enumerate(search_list):
