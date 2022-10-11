@@ -7,5 +7,5 @@ grad_proj_venv
 *.pot
 # Django #
 /ai_server/__pycache__
-/ai_server/db.sqlite3
-/ai_server/media
+#/ai_server/db.sqlite3
+#/ai_server/media
