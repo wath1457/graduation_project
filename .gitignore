@@ -1,5 +1,11 @@
-/collect_dataset/grad_proj_venv
+grad_proj_venv
 /collect_dataset/dataset
 /collect_dataset/clean_dataset
 /collect_dataset/back_up
 *.pyc
+*.log
+*.pot
+# Django #
+/ai_server/__pycache__
+/ai_server/db.sqlite3
+/ai_server/media
