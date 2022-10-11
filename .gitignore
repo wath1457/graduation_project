@@ -1,5 +1,5 @@
-grad_proj_venv
-dataset
-clean_dataset
-back_up
+/collect_dataset/grad_proj_venv
+/collect_dataset/dataset
+/collect_dataset/clean_dataset
+/collect_dataset/back_up
 *.pyc
