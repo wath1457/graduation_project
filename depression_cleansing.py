@@ -4,7 +4,7 @@ from cleanText import cleanText
 
 f = open("./dataset/depression.csv", encoding = 'utf-8')
 data = csv.reader(f)
-keywords = ['우울', '슬픔', '침울', '눈물', '속상', '자살', '무기력', '슬프', '슬퍼', '죽고', '불안', '자해']
+keywords = []
 tweets_list = []
 row_list = []
 tmp = [] # 중복 check
@@ -13,6 +13,14 @@ count = 1 # text 부분만 추출하기 위한 변수
 total = -1 # 클린징 전 데이터 개수
 wrong_data = 0 # 잘못 크롤링된 데이터 개수
 reduplication = -1 # 최상단 제외 / 중복 데이터 개수
+
+file = open("C:\\grad_project\\collect_dataset\\negative_word.txt", "r", encoding='utf-8')
+while True:
+    line = file.readline()
+    if line == '':
+        break
+    keywords.append(line.strip('\n'))
+file.close()
 
 for row in data:
     total += 1

@@ -4,7 +4,7 @@ from cleanText import cleanText
 
 f = open("./dataset/normal.csv", encoding = 'utf-8')
 data = csv.reader(f)
-keywords = ['기쁨', '좋음', '행복', '사랑', '기쁘', '기뻐', '희망', '뿌듯', '흐뭇', '편안', '감사', '소망']
+keywords = []
 tweets_list = []
 row_list = []
 tmp = [] # 중복 check
@@ -13,6 +13,14 @@ count = 1 # text 부분만 추출하기 위한 변수
 total = -1 # 클린징 전 데이터 개수
 wrong_data = 0 # 잘못 크롤링된 데이터 개수
 reduplication = -1 # 최상단 제외 / 중복 데이터 개수
+
+file = open("C:\grad_project\collect_dataset\positive_word.txt", "r", encoding='utf-8')
+while True:
+    line = file.readline()
+    if line == '':
+        break
+    keywords.append(line.strip('\n'))
+file.close()
 
 for row in data:
     total += 1
@@ -28,11 +36,11 @@ for row in data:
     if row_list[2] in tmp or row_list[2] == '': # 트윗 내용이 이미 한번 저장된 내용이면 넘김 
         reduplication += 1
     else:
-        for word in keywords:
-            if word in row_list[2]:
-                tweets_list.append([row_list[1],row_list[2]])
-                tmp.append(row_list[2])
-                break
+        # for word in keywords:
+        #     if word in row_list[2]:
+        tweets_list.append([row_list[1],row_list[2]])
+        tmp.append(row_list[2])
+                # break
     row_list = []
     print(total)
 f.close()

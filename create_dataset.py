@@ -21,4 +21,4 @@ f.close()
 
 tweets_df = pd.DataFrame(tweets_list, columns=['Datetime', 'Text', 'label'])
 tweets_df.drop_duplicates(['Text'], ignore_index = True)
-tweets_df.to_csv('./clean_dataset/tweets_dataset.csv', encoding='cp949')
+tweets_df.to_csv('./clean_dataset/tweets_dataset_final3.csv', encoding='cp949')
